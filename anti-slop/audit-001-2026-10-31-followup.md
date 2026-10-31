@@ -78,8 +78,8 @@ Design Read: personal CV portfolio for recruiters and lecturers, in a clean prof
 
 Result: no FAIL.
 
-## Not changed (outside the approved findings)
+## Also done (owner asked for everything)
 
-- The full home address is still shown.
-- The footer still says 2025.
-- The original `gambar.jpg` is still in the repo but no longer used.
+- Location shows only "Kota Bharu, Kelantan" instead of the full home address.
+- Footer year updated to 2026.
+- Removed the unused original `gambar.jpg`.
