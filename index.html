@@ -4,163 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amirul Haikal Bin Hairil Amir - Portfolio</title>
+    <script>
+        try {
+            var saved = localStorage.getItem('theme');
+            if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+        } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-    <div class="page">
-        <header class="hero" id="top">
-            <div class="hero__nav">
-                <div class="brand">
-                    <span class="brand__mark">AH</span>
-                    <span class="brand__name">Amirul Haikal</span>
+    <header class="site-header">
+        <a class="brand" href="#top">
+            <span class="brand__mark" aria-hidden="true">AH</span>
+            <span>Amirul Haikal</span>
+        </a>
+        <nav aria-label="Sections">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="theme-toggle" type="button" aria-pressed="false" hidden>Dark mode</button>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="hero__text">
+                <p class="hero__role">Information Technology student</p>
+                <h1>Amirul Haikal Bin Hairil Amir</h1>
+                <p class="lede">
+                    Diploma in Information Technology student at Kolej Vokasional Pasir Mas, Kelantan. I troubleshoot computer hardware and software, set up small networks, and write basic HTML, CSS, JavaScript and Python.
+                </p>
+                <p class="status"><span class="dot" aria-hidden="true"></span>Open to internships and entry-level roles</p>
+                <div class="actions">
+                    <a class="btn primary" href="#contact">Contact me</a>
+                    <a class="btn outline" href="resume.pdf" download>Download resume</a>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#contact">Contact</a></li>
+            </div>
+
+            <div class="hero__side">
+                <img class="portrait" src="gambar-480.jpg" alt="Portrait of Amirul Haikal" width="480" height="480" fetchpriority="high">
+                <dl class="details">
+                    <div><dt>Email</dt><dd><a href="mailto:amirulamira273@gmail.com">amirulamira273@gmail.com</a></dd></div>
+                    <div><dt>Phone</dt><dd><a href="tel:+60139298065">013-9298065</a></dd></div>
+                    <div><dt>Location</dt><dd>Lot 433, Kg. Tebing Tinggi, 16100 Kota Bharu, Kelantan</dd></div>
+                    <div><dt>Languages</dt><dd>English, Malay</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2>About</h2>
+            <div class="section__body about">
+                <div>
+                    <p>I hold the Malaysia Vocational Certificate and Malaysia Skills Certificate Level 3, and I'm now studying for a Diploma in Information Technology. Most of my training has been hands-on: repairing PCs, running cable, and configuring networks in the lab.</p>
+                    <p>Outside class I've served as a Student Leader (MPP), taken part in the MFLS programme, and sat on the committees for college events.</p>
+                </div>
+                <div>
+                    <h3>Highlights</h3>
+                    <ul class="list">
+                        <li>Digital Intermediate Level on MDEC's Digital Competency Score.</li>
+                        <li>Student Leader (MPP) and MFLS participant.</li>
+                        <li>Coursework in programming, networking and troubleshooting.</li>
+                        <li>Uses Word, Excel and PowerPoint for reports and data work.</li>
                     </ul>
-                </nav>
-            </div>
-
-            <div class="hero__body">
-                <div class="hero__text" data-animate>
-                    <p class="eyebrow">Information Technology Student</p>
-                    <h1>Amirul Haikal Bin Hairil Amir</h1>
-                    <p class="lede">
-                        Diploma in Information Technology student at Kolej Vokasional Pasir Mas, Kelantan. I troubleshoot computer hardware and software, set up small networks, and write basic HTML, CSS, JavaScript and Python.
-                    </p>
-                    <div class="cta-row">
-                        <a class="btn primary" href="#contact">Contact me</a>
-                        <a class="btn line" href="resume.pdf" download>Download resume</a>
-                    </div>
-                </div>
-
-                <div class="hero__visual" data-animate>
-                    <div class="portrait">
-                        <img src="gambar-480.jpg" alt="Portrait of Amirul Haikal" width="480" height="480" fetchpriority="high">
-                    </div>
-                    <div class="glass-card hero__info">
-                        <div class="card__eyebrow">Details</div>
-                        <div class="contact-list">
-                            <span>Email: <a href="mailto:amirulamira273@gmail.com">amirulamira273@gmail.com</a></span>
-                            <span>Phone: <a href="tel:+60139298065">013-9298065</a></span>
-                            <span>Location: Lot 433, Kg. Tebing Tinggi, 16100 Kota Bharu, Kelantan</span>
-                            <span>Languages: English, Malay</span>
-                        </div>
-                        <div class="badge-row">
-                            <span class="badge warm">Open to internships and entry-level roles</span>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <main>
-            <section id="about" class="section" data-animate>
-                <h2>About</h2>
-                <div class="split-grid">
-                    <div class="card">
-                        <p>I hold the Malaysia Vocational Certificate and Malaysia Skills Certificate Level 3, and I'm now studying for a Diploma in Information Technology. Most of my training has been hands-on: repairing PCs, running cable, and configuring networks in the lab.</p>
-                        <p>Outside class I've served as a Student Leader (MPP), taken part in the MFLS programme, and sat on the committees for college events.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Highlights</h3>
-                        <ul class="checklist">
-                            <li>Digital Intermediate Level on MDEC's Digital Competency Score.</li>
-                            <li>Student Leader (MPP) and MFLS participant.</li>
-                            <li>Coursework in programming, networking and troubleshooting.</li>
-                            <li>Uses Word, Excel and PowerPoint for reports and data work.</li>
-                        </ul>
-                    </div>
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <ol class="section__body timeline">
+                <li class="timeline__item is-current">
+                    <span class="dot" aria-hidden="true"></span>
+                    <p class="meta">2024 - now</p>
+                    <h3>Diploma in Information Technology</h3>
+                    <p>Kolej Vokasional Pasir Mas</p>
+                </li>
+                <li class="timeline__item">
+                    <p class="meta">2022 - 2024</p>
+                    <h3>Malaysia Vocational Certificate</h3>
+                    <p>Kolej Vokasional Pasir Mas</p>
+                </li>
+                <li class="timeline__item">
+                    <p class="meta">2022 - 2024</p>
+                    <h3>Malaysia Skills Certificate Level 3</h3>
+                    <p>Kolej Vokasional Pasir Mas</p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="section__body skills">
+                <div class="card card--main">
+                    <h3>Technical</h3>
+                    <ul class="list">
+                        <li><strong>Troubleshooting:</strong> diagnose and fix common hardware and software faults.</li>
+                        <li><strong>Networking:</strong> basic LAN/WAN setup, configuration and cable management.</li>
+                        <li><strong>Programming:</strong> HTML, CSS, JavaScript and Python at an introductory level.</li>
+                        <li><strong>Office software:</strong> Word, Excel and PowerPoint for documentation and data analysis.</li>
+                        <li><strong>Digital literacy:</strong> Digital Intermediate Level (MDEC).</li>
+                    </ul>
                 </div>
-            </section>
-
-            <section id="education" class="section" data-animate>
-                <h2>Education</h2>
-                <div class="timeline">
-                    <article class="timeline__item">
-                        <div class="timeline__dot"></div>
-                        <div class="timeline__content">
-                            <div class="meta">2024 - Now</div>
-                            <h3>Diploma in Information Technology</h3>
-                            <p>Kolej Vokasional Pasir Mas</p>
-                        </div>
-                    </article>
-                    <article class="timeline__item">
-                        <div class="timeline__dot"></div>
-                        <div class="timeline__content">
-                            <div class="meta">2022 - 2024</div>
-                            <h3>Malaysia Vocational Certificate</h3>
-                            <p>Kolej Vokasional Pasir Mas</p>
-                        </div>
-                    </article>
-                    <article class="timeline__item">
-                        <div class="timeline__dot"></div>
-                        <div class="timeline__content">
-                            <div class="meta">2022 - 2024</div>
-                            <h3>Malaysia Skills Certificate Level 3</h3>
-                            <p>Kolej Vokasional Pasir Mas</p>
-                        </div>
-                    </article>
+                <div class="card">
+                    <h3>Leadership and teamwork</h3>
+                    <ul class="list">
+                        <li><strong>Leadership:</strong> Student Leader (MPP); took part in the national MFLS programme.</li>
+                        <li><strong>Teamwork:</strong> project committee member and sports team member.</li>
+                        <li><strong>Planning:</strong> committee member for major college events.</li>
+                    </ul>
                 </div>
-            </section>
-
-            <section id="skills" class="section" data-animate>
-                <h2>Skills</h2>
-                <div class="cards-grid">
-                    <div class="card">
-                        <h3>Technical</h3>
-                        <ul class="checklist">
-                            <li><strong>Troubleshooting:</strong> diagnose and fix common hardware and software faults.</li>
-                            <li><strong>Networking:</strong> basic LAN/WAN setup, configuration and cable management.</li>
-                            <li><strong>Programming:</strong> HTML, CSS, JavaScript and Python at an introductory level.</li>
-                            <li><strong>Office software:</strong> Word, Excel and PowerPoint for documentation and data analysis.</li>
-                            <li><strong>Digital literacy:</strong> Digital Intermediate Level (MDEC).</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>Leadership and teamwork</h3>
-                        <ul class="checklist">
-                            <li><strong>Leadership:</strong> Student Leader (MPP); took part in the national MFLS programme.</li>
-                            <li><strong>Teamwork:</strong> project committee member and sports team member.</li>
-                            <li><strong>Planning:</strong> committee member for major college events.</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>Also</h3>
-                        <div class="inline-list">
-                            <span class="badge">Multimedia</span>
-                            <span class="badge">Digital marketing</span>
-                            <span class="badge">Critical thinking</span>
-                            <span class="badge">Organisation</span>
-                            <span class="badge">Creativity</span>
-                        </div>
-                    </div>
+                <div class="card">
+                    <h3>Also</h3>
+                    <ul class="tags">
+                        <li>Multimedia</li>
+                        <li>Digital marketing</li>
+                        <li>Critical thinking</li>
+                        <li>Organisation</li>
+                        <li>Creativity</li>
+                    </ul>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="contact" class="section contact" data-animate>
+        <section id="contact" class="contact">
+            <div class="contact__inner">
                 <h2>Contact</h2>
-                <p class="section__lede">I'm looking for internships and entry-level IT roles. Email is the quickest way to reach me.</p>
-                <div class="contact-actions">
-                    <a class="btn primary" href="mailto:amirulamira273@gmail.com">Email me</a>
-                    <a class="btn line" href="resume.pdf" download>Download resume</a>
-                    <a class="btn ghost" href="tel:+60139298065">Call 013-9298065</a>
+                <div>
+                    <p class="lede">I'm looking for internships and entry-level IT roles. Email is the quickest way to reach me.</p>
+                    <div class="actions">
+                        <a class="btn primary" href="mailto:amirulamira273@gmail.com">Email me</a>
+                        <a class="btn outline" href="resume.pdf" download>Download resume</a>
+                        <a class="btn outline" href="tel:+60139298065">Call 013-9298065</a>
+                    </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
+    </main>
 
-        <footer class="footer">
-            <p>&copy; 2025 Amirul Haikal Bin Hairil Amir</p>
-        </footer>
-    </div>
+    <footer class="footer">
+        <p>&copy; 2025 Amirul Haikal Bin Hairil Amir</p>
+    </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

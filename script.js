@@ -1,19 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('[data-animate]');
+const root = document.documentElement;
+const toggle = document.querySelector('.theme-toggle');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (!('IntersectionObserver' in window)) {
-        sections.forEach((section) => section.classList.add('is-visible'));
-        return;
-    }
+const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : systemDark.matches);
+const sync = () => toggle.setAttribute('aria-pressed', String(isDark()));
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
+toggle.hidden = false;
+sync();
 
-    sections.forEach((section) => observer.observe(section));
+toggle.addEventListener('click', () => {
+    const next = isDark() ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+        localStorage.setItem('theme', next);
+    } catch (e) {}
+    sync();
 });
+
+systemDark.addEventListener('change', sync);
