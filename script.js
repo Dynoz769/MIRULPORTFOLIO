@@ -1,35 +1,20 @@
-﻿// Smooth scrolling and scroll-triggered reveals
+const root = document.documentElement;
+const toggle = document.querySelector('.theme-toggle');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-document.addEventListener('DOMContentLoaded', () => {
-    const animatedSections = document.querySelectorAll('[data-animate]');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
+const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : systemDark.matches);
+const sync = () => toggle.setAttribute('aria-pressed', String(isDark()));
 
-    animatedSections.forEach((section) => observer.observe(section));
+toggle.hidden = false;
+sync();
 
-    const nav = document.querySelector('.hero__nav');
-    const toggleNavState = () => {
-        if (!nav) return;
-        nav.classList.toggle('nav-scrolled', window.scrollY > 12);
-    };
-    toggleNavState();
-    window.addEventListener('scroll', toggleNavState);
-
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener('click', (event) => {
-            const targetId = link.getAttribute('href');
-            if (!targetId || targetId === '#') return;
-            const target = document.querySelector(targetId);
-            if (target) {
-                event.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
+toggle.addEventListener('click', () => {
+    const next = isDark() ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+        localStorage.setItem('theme', next);
+    } catch (e) {}
+    sync();
 });
+
+systemDark.addEventListener('change', sync);
