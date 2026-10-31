@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --bg-1: #040915;
     --bg-2: #0b1526;
     --card: rgba(255, 255, 255, 0.06);
@@ -20,6 +20,14 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 24px;
+}
+
 body {
     margin: 0;
     background:
@@ -32,19 +40,6 @@ body {
     min-height: 100vh;
 }
 
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 140px 140px;
-    mix-blend-mode: lighten;
-    opacity: 0.65;
-    pointer-events: none;
-    z-index: -1;
-}
 
 .page {
     max-width: 1140px;
@@ -63,21 +58,6 @@ a {
     padding-top: 12px;
     padding-bottom: 54px;
 }
-.hero::before,
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-.hero::before {
-    background: radial-gradient(60% 50% at 15% 20%, rgba(20, 244, 195, 0.15), transparent 45%);
-    opacity: 0.7;
-}
-.hero::after {
-    background: radial-gradient(70% 60% at 85% 10%, rgba(245, 165, 36, 0.12), transparent 50%);
-    opacity: 0.7;
-}
 
 .hero__nav {
     position: sticky;
@@ -93,12 +73,6 @@ a {
     border-radius: 18px;
     backdrop-filter: blur(16px);
     box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-.hero__nav.nav-scrolled {
-    box-shadow: var(--shadow);
-    border-color: rgba(20, 244, 195, 0.18);
-    transform: translateY(-3px);
 }
 
 .brand {
@@ -119,7 +93,7 @@ a {
     background: linear-gradient(135deg, rgba(20, 244, 195, 0.28), rgba(245, 165, 36, 0.2));
     border: 1px solid var(--border);
     font-weight: 700;
-    color: #061018;
+    color: var(--text-primary);
 }
 nav ul {
     display: flex;
@@ -192,13 +166,11 @@ nav a:hover {
     border: 1px solid transparent;
 }
 .btn.primary {
-    background: linear-gradient(135deg, rgba(20, 244, 195, 0.9), rgba(245, 165, 36, 0.9));
+    background: var(--accent);
     color: #04101a;
-    box-shadow: 0 16px 32px rgba(20, 244, 195, 0.25);
 }
 .btn.primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 46px rgba(20, 244, 195, 0.35);
 }
 .btn.ghost {
     border-color: var(--border);
@@ -213,8 +185,7 @@ nav a:hover {
 .btn.line {
     border-color: rgba(20, 244, 195, 0.35);
     color: var(--text-primary);
-    background: linear-gradient(135deg, rgba(20, 244, 195, 0.08), rgba(107, 182, 255, 0.08));
-    box-shadow: 0 10px 24px rgba(20, 244, 195, 0.2);
+    background: rgba(20, 244, 195, 0.06);
 }
 .btn.line:hover {
     border-color: rgba(20, 244, 195, 0.6);
@@ -222,28 +193,6 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-.pill-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 14px;
-}
-.pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text-primary);
-    font-weight: 600;
-}
-.pill.small {
-    padding: 7px 10px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
 
 .hero__visual {
     position: relative;
@@ -262,24 +211,12 @@ nav a:hover {
     aspect-ratio: 1 / 1;
     max-width: 240px;
     width: 100%;
-    isolation: isolate;
 }
 .portrait img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(1.02);
-    mix-blend-mode: normal;
-}
-.portrait__shine {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(70% 90% at 20% 10%, rgba(20, 244, 195, 0.35), transparent 40%),
-                radial-gradient(60% 60% at 80% 10%, rgba(245, 165, 36, 0.25), transparent 45%);
-    filter: blur(18px);
-    opacity: 0.9;
-    z-index: 1;
 }
 
 .glass-card {
@@ -289,23 +226,6 @@ nav a:hover {
     padding: 20px;
     backdrop-filter: blur(16px);
     box-shadow: var(--shadow);
-}
-.glass-card.highlight {
-    position: relative;
-    overflow: hidden;
-}
-.glass-card.highlight::after {
-    content: "";
-    position: absolute;
-    inset: -30%;
-    background: radial-gradient(circle at 20% 20%, rgba(20, 244, 195, 0.16), transparent 30%),
-                radial-gradient(circle at 80% 10%, rgba(245, 165, 36, 0.18), transparent 28%);
-    filter: blur(60px);
-    z-index: 0;
-}
-.glass-card > * {
-    position: relative;
-    z-index: 1;
 }
 
 .card__eyebrow {
@@ -358,18 +278,10 @@ nav a:hover {
     backdrop-filter: blur(8px);
     box-shadow: var(--shadow);
 }
-.section__header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 18px;
-    flex-wrap: wrap;
-    margin-bottom: 18px;
-}
 .section h2 {
     font-family: var(--font-display);
     font-size: clamp(1.9rem, 3vw, 2.4rem);
-    margin: 4px 0 2px;
+    margin: 0 0 18px;
 }
 .section__lede {
     max-width: 460px;
@@ -386,6 +298,9 @@ nav a:hover {
     border-radius: 16px;
     padding: 18px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.card p:first-child {
+    margin-top: 0;
 }
 .card h3 {
     margin-top: 0;
@@ -468,62 +383,12 @@ nav a:hover {
     gap: 16px;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-    margin-top: 6px;
-}
-.skill {
-    padding: 14px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: var(--card);
-}
-.skill__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-.skill__bar {
-    width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
-    overflow: hidden;
-    margin-top: 8px;
-    border: 1px solid var(--border);
-}
-.skill__bar span {
-    display: block;
-    height: 100%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(245, 165, 36, 0.8), rgba(20, 244, 195, 0.9));
-    box-shadow: 0 10px 20px rgba(20, 244, 195, 0.25);
-}
 
-.contact {
-    background: linear-gradient(135deg, rgba(20, 244, 195, 0.06), rgba(245, 165, 36, 0.08)), rgba(5, 10, 21, 0.75);
-}
-.contact-card {
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    padding: 20px;
-    background: rgba(5, 10, 21, 0.55);
-    box-shadow: var(--shadow);
-}
 .contact-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     margin: 16px 0;
-}
-.contact-details {
-    display: grid;
-    gap: 6px;
-    color: var(--text-muted);
 }
 
 .footer {
@@ -535,14 +400,25 @@ nav a:hover {
     border-top: 1px solid var(--border);
 }
 
-[data-animate] {
+.js [data-animate] {
     opacity: 0;
     transform: translateY(18px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.is-visible {
+.js [data-animate].is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .js [data-animate] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 @media (max-width: 720px) {
